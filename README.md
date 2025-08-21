@@ -3,8 +3,7 @@
 This repository contains the source code for my personal cybersecurity portfolio, built with **HTML + Tailwind CSS** and hosted on **GitHub Pages**.
 
 ## About Me
-I bridge the gap between **security policy and technical reality**, transforming frameworks like **NIST** and **CMMC** into automated, embedded controls.  
-My work delivers a continuously validated security posture that is both **provably compliant** and **resilient by design**.
+I bridge the gap between **security policy and technical reality**, transforming frameworks like **NIST** and **CMMC** into automated, embedded controls. My work delivers a continuously validated security posture that is both **provably compliant** and **resilient by design**.
 
 ## Sections
 - **About Me** — background and career focus  
