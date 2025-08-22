@@ -51,7 +51,7 @@
     html:focus-within { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce){ html:focus-within { scroll-behavior: auto; } }
     body{background:linear-gradient(135deg,#0A0E1A 0%,#0F1419 50%,#161B26 100%);color:#E5E7EB}
-    .card{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1)}
+    .card{background:rgba(255,255,255,.05);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1)}
     .text-gradient{background:linear-gradient(135deg,#1E3A8A,#3B82F6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .focus-ring:focus{outline:2px solid #3B82F6;outline-offset:2px}
     .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 1px, 1px); white-space: nowrap; border: 0; }
@@ -98,19 +98,136 @@
     <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
       <a href="#top" class="font-bold text-xl text-gradient" aria-label="Home">SR</a>
       <button id="menuBtn" class="md:hidden border border-white/20 rounded-lg px-3 py-2 text-sm" aria-expanded="false" aria-controls="menu" aria-label="Open menu">Menu</button>
-      <div id="menu" class="hidden md:flex gap-6 text-sm" role="menubar">
-        <a role="menuitem" href="#about" class="hover:text-accent transition">About</a>
-        <a role="menuitem" href="#experience" class="hover:text-accent transition">Experience</a>
-        <a role="menuitem" href="#projects" class="hover:text-accent transition">Projects</a>
-        <a role="menuitem" href="#skills" class="hover:text-accent transition">Skills</a>
-        <a role="menuitem" href="#contact" class="hover:text-accent transition">Contact</a>
+      <div id="menu" class="hidden md:flex gap-6 text-sm">
+        <a href="#about" class="hover:text-accent transition">About</a>
+        <a href="#experience" class="hover:text-accent transition">Experience</a>
+        <a href="#projects" class="hover:text-accent transition">Projects</a>
+        <a href="#skills" class="hover:text-accent transition">Skills</a>
+        <a href="#contact" class="hover:text-accent transition">Contact</a>
       </div>
     </div>
   </nav>
 
   <main id="main">
     <!-- Hero -->
-    ... [Hero, Highlights, About, Experience already expanded above] ...
+    <header id="top" class="pt-24 lg:pt-28 pb-24 relative" role="banner">
+      <div class="absolute inset-0 bg-gradient-to-br from-brand/10 to-accent/5"></div>
+      <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative">
+        <div class="space-y-6">
+          <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight">
+            <span class="block">Sreenith Rangaswamy</span>
+            <span class="block text-gradient text-3xl lg:text-4xl mt-2">Cybersecurity Professional</span>
+          </h1>
+          <p class="text-sm lg:text-base text-gray-400 italic tracking-wide">GRC • SOC • Automation</p>
+          <p class="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl">
+            I bridge the gap between security policy and technical reality, transforming frameworks like NIST and CMMC into automated, embedded controls. My work delivers a continuously validated security posture that is both provably compliant and resilient by design.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="./assets/Sreenith_Resume.pdf" target="_blank" rel="noopener noreferrer" class="bg-brand hover:bg-accent px-6 py-3 rounded-lg font-semibold transition focus-ring">Download Resume</a>
+            <a href="#contact" class="border border-brand text-brand hover:bg-brand hover:text-white px-6 py-3 rounded-lg font-semibold transition focus-ring">Get In Touch</a>
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 rounded-2xl blur-3xl bg-gradient-to-r from-brand to-accent opacity-20 group-hover:opacity-40 transition"></div>
+          <img
+               src="./assets/Headshot.jpg"
+               srcset="./assets/Headshot-512.jpg 512w, ./assets/Headshot.jpg 1024w"
+               sizes="(min-width:1024px) 480px, 60vw"
+               alt="Portrait of Sreenith Rangaswamy"
+               class="headshot-animate relative rounded-2xl border border-white/10 w-full max-w-md mx-auto shadow-soft group-hover:scale-[1.02] transition"
+               width="1024" height="1024" fetchpriority="high" decoding="async" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Highlights -->
+    <section id="highlights" class="py-16 bg-midnight" aria-labelledby="highlights-title">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 id="highlights-title" data-reveal class="text-3xl font-bold mb-12 text-center"><span class="text-gradient">Key</span> Achievements</h2>
+        <div data-reveal-parent class="grid md:grid-cols-3 gap-8 text-center">
+          <div data-reveal class="card rounded-xl p-6 hover:scale-105 transition" aria-label="Compliance gaps addressed">
+            <div class="text-3xl font-bold text-gradient mb-2">45+</div>
+            <p class="text-sm text-gray-300">Compliance gaps addressed at AR Cortex during a CMMC Level 2 evaluation.</p>
+          </div>
+          <div data-reveal class="card rounded-xl p-6 hover:scale-105 transition" aria-label="Students mentored">
+            <div class="text-3xl font-bold text-gradient mb-2">135+</div>
+            <p class="text-sm text-gray-300">Graduate students mentored across OS, Risk, and Cloud Security courses.</p>
+          </div>
+          <div data-reveal class="card rounded-xl p-6 hover:scale-105 transition" aria-label="Workshops organized">
+            <div class="text-3xl font-bold text-gradient mb-2">6</div>
+            <p class="text-sm text-gray-300">ISACA &amp; OWASP workshops organized as President of the NYIT Cybersecurity Club.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20 bg-midnight" aria-labelledby="about-title">
+      <div class="max-w-4xl mx-auto px-4">
+        <div data-reveal class="card rounded-2xl p-8">
+          <h2 id="about-title" class="text-3xl font-bold mb-6"><span class="text-gradient">About</span> Me</h2>
+          <div class="text-gray-300 leading-relaxed text-lg space-y-4">
+            <p>I'm Sreenith Rangaswamy, a Master's in Cybersecurity graduate from NYIT Vancouver with hands-on experience in governance, risk, and compliance, SOC operations, and API security.</p>
+            <p>At AR Cortex, I supported CMMC readiness by mapping NIST 800-171 controls, coordinating evidence collection across teams, and helping close 45+ compliance gaps—significantly strengthening audit readiness. At TeejLab, I advanced API security by assessing vendor risks, aligning findings to NIST 800-53, and prototyping GPT-powered automations that streamlined compliance documentation and reduced manual effort.</p>
+            <p>My work bridges technical security and business-aligned risk management—whether that means evaluating third-party posture, automating control checks, or translating complex findings into clear insights for executives and teams. Outside of work, I share perspectives on cybersecurity and geopolitics, connecting hands-on security expertise with the bigger picture of risk and strategy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-20" aria-labelledby="exp-title">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 id="exp-title" data-reveal class="text-3xl font-bold mb-12"><span class="text-gradient">Professional</span> Experience</h2>
+        <div data-reveal-parent class="space-y-8">
+          <!-- TeejLab -->
+          <article data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+              <div>
+                <h3 class="text-xl font-bold">Cybersecurity Apprentice — API Security &amp; Risk Research</h3>
+                <p class="text-accent">TeejLab Inc • Burnaby, Canada</p>
+              </div>
+              <span class="text-sm text-gray-400 md:text-right">Jan 2025 – May 2025</span>
+            </div>
+            <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc ps-5">
+              <li>Automated API security assessments by analyzing API metadata for sensitive data exposure and compliance gaps (<strong>GDPR</strong>, <strong>NIST 800-53</strong>).</li>
+              <li>Mapped vulnerabilities to regulatory controls and contributed to internal risk scoring models.</li>
+              <li>Built Proof of Concepts (PoCs) using API discovery tools for compliance reporting and audit readiness.</li>
+            </ul>
+          </article>
+          <!-- AR Cortex -->
+          <article data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+              <div>
+                <h3 class="text-xl font-bold">Cybersecurity Risk &amp; Compliance Analyst (Intern)</h3>
+                <p class="text-accent">AR Cortex • Los Angeles, CA (Remote)</p>
+              </div>
+              <span class="text-sm text-gray-400 md:text-right">Jul 2024 – Dec 2024</span>
+            </div>
+            <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc ps-5">
+              <li>Supported <strong>CMMC Level 1 &amp; 2</strong> readiness by mapping NIST SP 800-171 controls and coordinating evidence collection across SMEs.</li>
+              <li>Helped remediate <strong>45+ compliance gaps</strong> across AC, CM, IA, IR, and AU domains; consolidated POA&amp;Ms and executive status reports.</li>
+              <li>Partnered with engineering to align hardening baselines with <strong>NIST CSF</strong> outcomes and audit checkpoints.</li>
+            </ul>
+          </article>
+          <!-- NYIT -->
+          <article data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+              <div>
+                <h3 class="text-xl font-bold">Graduate Teaching Assistant</h3>
+                <p class="text-accent">NYIT Vancouver</p>
+              </div>
+              <span class="text-sm text-gray-400 md:text-right">Jan 2024 – Dec 2024</span>
+            </div>
+            <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc ps-5">
+              <li>Mentored <strong>135+ students</strong> in Risk Management &amp; Legal Issues, OS Security, and Cloud Security.</li>
+              <li>Led labs on IAM, risk assessment methods, and compliance control mapping.</li>
+              <li>Served as <strong>Cybersecurity Club President</strong>, organizing 6+ events with ISACA and OWASP.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- Projects -->
     <section id="projects" class="py-20 bg-midnight" aria-labelledby="projects-title">
@@ -136,7 +253,7 @@
 
     <!-- Skills & Certifications -->
     <section id="skills" class="py-20" aria-labelledby="skills-title">
-      <div class="max-w-6xl mx-auto px-4">
+      <div class="max-w-6xl mx_auto px-4">
         <h2 id="skills-title" data-reveal class="text-3xl font-bold mb-12 text-center"><span class="text-gradient">Skills</span> & Expertise</h2>
         <div data-reveal-parent class="grid lg:grid-cols-3 gap-8">
           <!-- GRC Stack -->
@@ -293,7 +410,7 @@
         const parent = el.closest('[data-reveal-parent]');
         const key = parent || document.body;
         const idx = groups.get(key) || 0;
-        el.style.transitionDelay = (idx * 60) + 'ms'; // faster stagger
+        el.style.transitionDelay = (idx * 60) + 'ms';
         groups.set(key, idx+1);
       });
       const io = new IntersectionObserver((entries)=>{
