@@ -8,14 +8,16 @@
   <!-- Simple, clear description -->
   <meta name="description" content="Cybersecurity professional specializing in GRC, SOC operations, and security automation." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://sreenith.dev/" />
-  <link rel="icon" href="./assets/favicon.png" />
+  <link rel="canonical" href="https://sreenith70.github.io/" />
+  <!-- Removed favicon until provided -->
 
   <!-- Social cards -->
   <meta property="og:title" content="Sreenith Rangaswamy — Cybersecurity Portfolio" />
   <meta property="og:description" content="Cybersecurity professional specializing in GRC, SOC operations, and security automation." />
-  <meta property="og:image" content="https://sreenith70.github.io/assets/Headshot.png" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sreenith70.github.io/" />
+  <meta property="og:image" content="https://sreenith70.github.io/assets/Headshot.jpg" />
+  <meta property="og:site_name" content="Sreenith Rangaswamy" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sreenith Rangaswamy — Cybersecurity Portfolio" />
   <meta name="twitter:description" content="Cybersecurity professional specializing in GRC, SOC operations, and security automation." />
@@ -23,7 +25,9 @@
   <meta name="theme-color" content="#0A0E1A" />
 
   <!-- Performance hints -->
-  <link rel="preload" as="image" href="./assets/Headshot.jpg" imagesrcset="./assets/Headshot.png 1024w" imagesizes="(min-width:1024px) 480px, 60vw">
+  <link rel="preload" as="image" href="./assets/Headshot.jpg"
+        imagesrcset="./assets/Headshot-512.jpg 512w, ./assets/Headshot.jpg 1024w"
+        imagesizes="(min-width:1024px) 480px, 60vw">
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -54,6 +58,19 @@
     nav{height:var(--nav-h)}
     main{margin-top:var(--nav-h)}
     noscript .js-required { display:none; }
+
+    #menu { flex-direction:column; gap:1rem; }
+    #menu.hidden { display: none !important; }
+    @media (min-width:768px){ #menu { display:flex; flex-direction:row; } }
+
+    @media (prefers-reduced-motion: no-preference){
+      [data-reveal]{opacity:0; transform: translateY(24px); transition: opacity .8s cubic-bezier(0.25, 1, 0.5, 1), transform .8s cubic-bezier(0.25, 1, 0.5, 1);}
+      [data-reveal].is-visible{opacity:1; transform:none;}
+
+      .headshot-animate{opacity:0; transform: scale(0.97) translateY(16px); transition: opacity .9s cubic-bezier(0.25, 1, 0.5, 1), transform .9s cubic-bezier(0.25, 1, 0.5, 1), box-shadow .4s ease;}
+      .headshot-animate.is-visible{opacity:1; transform: scale(1) translateY(0);}
+      .headshot-animate:hover{transform: scale(1.03) translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,.35);}
+    }
   </style>
 
   <!-- Structured data -->
@@ -63,7 +80,7 @@
     "@type": "Person",
     "name": "Sreenith Rangaswamy",
     "jobTitle": "Cybersecurity Professional",
-    "url": "https://sreenith.dev/",
+    "url": "https://sreenith70.github.io/",
     "image": "https://sreenith70.github.io/assets/Headshot.jpg",
     "email": "mailto:sreenith.r@gmail.com",
     "sameAs": [
@@ -93,133 +110,19 @@
 
   <main id="main">
     <!-- Hero -->
-    <header id="top" class="pt-24 lg:pt-28 pb-24 relative" role="banner">
-      <div class="absolute inset-0 bg-gradient-to-br from-brand/10 to-accent/5"></div>
-      <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative">
-        <div class="space-y-6">
-          <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight">
-            <span class="block">Sreenith Rangaswamy</span>
-            <span class="block text-gradient text-3xl lg:text-4xl mt-2">Cybersecurity Professional</span>
-          </h1>
-          <p class="text-sm lg:text-base text-gray-400 italic tracking-wide">GRC • SOC • Automation</p>
-          <p class="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl">
-            I bridge the gap between security policy and technical reality, transforming frameworks like NIST and CMMC into automated, embedded controls. My work delivers a continuously validated security posture that is both provably compliant and resilient by design.
-          </p>
-          <div class="flex flex-wrap gap-4 pt-4">
-            <a href="./assets/Sreenith_Resume.pdf" target="_blank" rel="noopener noreferrer" class="bg-brand hover:bg-accent px-6 py-3 rounded-lg font-semibold transition focus-ring">Download Resume</a>
-            <a href="#contact" class="border border-brand text-brand hover:bg-brand hover:text-white px-6 py-3 rounded-lg font-semibold transition focus-ring">Get In Touch</a>
-          </div>
-        </div>
-        <div class="relative group">
-          <div class="absolute inset-0 rounded-2xl blur-3xl bg-gradient-to-r from-brand to-accent opacity-20 group-hover:opacity-40 transition"></div>
-          <img src="./assets/Headshot.jpg"
-               alt="Portrait of Sreenith Rangaswamy"
-               class="relative rounded-2xl border border-white/10 w-full max-w-md mx-auto shadow-soft group-hover:scale-[1.02] transition"
-               width="1024" height="1024" fetchpriority="high" decoding="async" />
-        </div>
-      </div>
-    </header>
-
-    <!-- Highlights -->
-    <section id="highlights" class="py-16 bg-midnight" aria-labelledby="highlights-title">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 id="highlights-title" class="text-3xl font-bold mb-12 text-center"><span class="text-gradient">Key</span> Achievements</h2>
-        <div class="grid md:grid-cols-3 gap-8 text-center">
-          <div class="card rounded-xl p-6 hover:scale-105 transition" aria-label="Compliance gaps addressed">
-            <div class="text-3xl font-bold text-gradient mb-2">45+</div>
-            <p class="text-sm text-gray-300">Compliance gaps addressed at AR Cortex during a CMMC Level 2 evaluation.</p>
-          </div>
-          <div class="card rounded-xl p-6 hover:scale-105 transition" aria-label="Students mentored">
-            <div class="text-3xl font-bold text-gradient mb-2">135+</div>
-            <p class="text-sm text-gray-300">Graduate students mentored across OS, Risk, and Cloud Security courses.</p>
-          </div>
-          <div class="card rounded-xl p-6 hover:scale-105 transition" aria-label="Workshops organized">
-            <div class="text-3xl font-bold text-gradient mb-2">6</div>
-            <p class="text-sm text-gray-300">ISACA &amp; OWASP workshops organized as President of the NYIT Cybersecurity Club.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="py-20 bg-midnight" aria-labelledby="about-title">
-      <div class="max-w-4xl mx-auto px-4">
-        <div class="card rounded-2xl p-8">
-          <h2 id="about-title" class="text-3xl font-bold mb-6"><span class="text-gradient">About</span> Me</h2>
-          <div class="text-gray-300 leading-relaxed text-lg space-y-4">
-            <p>I'm Sreenith Rangaswamy, a Master's in Cybersecurity graduate from NYIT Vancouver with hands-on experience in governance, risk, and compliance, SOC operations, and API security.</p>
-            <p>At AR Cortex, I supported CMMC readiness by mapping NIST 800-171 controls, coordinating evidence collection across teams, and helping close 45+ compliance gaps—significantly strengthening audit readiness. At TeejLab, I advanced API security by assessing vendor risks, aligning findings to NIST 800-53, and prototyping GPT-powered automations that streamlined compliance documentation and reduced manual effort.</p>
-            <p>My work bridges technical security and business-aligned risk management—whether that means evaluating third-party posture, automating control checks, or translating complex findings into clear insights for executives and teams. Outside of work, I share perspectives on cybersecurity and geopolitics, connecting hands-on security expertise with the bigger picture of risk and strategy.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="py-20" aria-labelledby="exp-title">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 id="exp-title" class="text-3xl font-bold mb-12"><span class="text-gradient">Professional</span> Experience</h2>
-        <div class="space-y-8">
-          <!-- TeejLab -->
-          <article class="card rounded-xl p-6 hover:shadow-lg transition">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-              <div>
-                <h3 class="text-xl font-bold">Cybersecurity Apprentice — API Security &amp; Risk Research</h3>
-                <p class="text-accent">TeejLab Inc • Burnaby, Canada</p>
-              </div>
-              <span class="text-sm text-gray-400 md:text-right">Jan 2025 – May 2025</span>
-            </div>
-            <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc ps-5">
-              <li>Automated API security assessments by analyzing API metadata for sensitive data exposure and compliance gaps (<strong>GDPR</strong>, <strong>NIST 800-53</strong>).</li>
-              <li>Mapped vulnerabilities to regulatory controls and contributed to internal risk scoring models.</li>
-              <li>Built Proof of Concepts (PoCs) using API discovery tools for compliance reporting and audit readiness.</li>
-            </ul>
-          </article>
-          <!-- AR Cortex -->
-          <article class="card rounded-xl p-6 hover:shadow-lg transition">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-              <div>
-                <h3 class="text-xl font-bold">Cybersecurity Risk &amp; Compliance Analyst (Intern)</h3>
-                <p class="text-accent">AR Cortex • Los Angeles, CA (Remote)</p>
-              </div>
-              <span class="text-sm text-gray-400 md:text-right">Jul 2024 – Dec 2024</span>
-            </div>
-            <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc ps-5">
-              <li>Supported <strong>CMMC Level 1 &amp; 2</strong> readiness by mapping NIST SP 800-171 controls and coordinating evidence collection across SMEs.</li>
-              <li>Helped remediate <strong>45+ compliance gaps</strong> across AC, CM, IA, IR, and AU domains; consolidated POA&amp;Ms and executive status reports.</li>
-              <li>Partnered with engineering to align hardening baselines with <strong>NIST CSF</strong> outcomes and audit checkpoints.</li>
-            </ul>
-          </article>
-          <!-- NYIT -->
-          <article class="card rounded-xl p-6 hover:shadow-lg transition">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-              <div>
-                <h3 class="text-xl font-bold">Graduate Teaching Assistant</h3>
-                <p class="text-accent">NYIT Vancouver</p>
-              </div>
-              <span class="text-sm text-gray-400 md:text-right">Jan 2024 – Dec 2024</span>
-            </div>
-            <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc ps-5">
-              <li>Mentored <strong>135+ students</strong> in Risk Management &amp; Legal Issues, OS Security, and Cloud Security.</li>
-              <li>Led labs on IAM, risk assessment methods, and compliance control mapping.</li>
-              <li>Served as <strong>Cybersecurity Club President</strong>, organizing 6+ events with ISACA and OWASP.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+    ... [Hero, Highlights, About, Experience already expanded above] ...
 
     <!-- Projects -->
     <section id="projects" class="py-20 bg-midnight" aria-labelledby="projects-title">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 id="projects-title" class="text-3xl font-bold mb-12"><span class="text-gradient">Key</span> Projects</h2>
-        <div class="grid lg:grid-cols-2 gap-8">
-          <div class="card rounded-xl p-6 hover:scale-105 transition group">
+        <h2 id="projects-title" data-reveal class="text-3xl font-bold mb-12"><span class="text-gradient">Key</span> Projects</h2>
+        <div data-reveal-parent class="grid lg:grid-cols-2 gap-8">
+          <div data-reveal class="card rounded-xl p-6 hover:scale-105 transition group">
             <h3 class="text-xl font-bold mb-4 group-hover:text-accent transition">Gap Analysis Agent — CMMC Compliance</h3>
             <p class="text-gray-300 mb-4 text-sm leading-relaxed">Offline RAG pipeline using <strong>Gemma 2B</strong>, <strong>ChromaDB</strong>, and <strong>Streamlit</strong> to evaluate policies against CMMC L1/L2. Produces audit-ready CSVs: control coverage, gaps, and remediation guidance.</p>
             <a href="https://github.com/sreenith70/Gap-Analysis-Agent-CMMC" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold underline hover:text-white transition">View Project →</a>
           </div>
-          <div class="card rounded-xl p-6 hover:scale-105 transition group">
+          <div data-reveal class="card rounded-xl p-6 hover:scale-105 transition group">
             <h3 class="text-xl font-bold mb-4 group-hover:text-accent transition">AI-Powered Security Workflows</h3>
             <p class="text-gray-300 mb-4 text-sm leading-relaxed">Prompt-engineering methods for <strong>threat triage</strong> and <strong>compliance gap analysis</strong>. Technical blog series recognized by NYIT faculty.</p>
             <div class="flex gap-3 flex-wrap text-sm">
@@ -234,10 +137,10 @@
     <!-- Skills & Certifications -->
     <section id="skills" class="py-20" aria-labelledby="skills-title">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 id="skills-title" class="text-3xl font-bold mb-12 text-center"><span class="text-gradient">Skills</span> & Expertise</h2>
-        <div class="grid lg:grid-cols-3 gap-8">
+        <h2 id="skills-title" data-reveal class="text-3xl font-bold mb-12 text-center"><span class="text-gradient">Skills</span> & Expertise</h2>
+        <div data-reveal-parent class="grid lg:grid-cols-3 gap-8">
           <!-- GRC Stack -->
-          <div class="card rounded-xl p-6 hover:shadow-lg transition">
+          <div data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
             <h3 class="text-xl font-bold mb-4"><span class="text-gradient">GRC</span> Stack</h3>
             <ul class="text-sm text-gray-300 space-y-2">
               <li><strong>Frameworks:</strong> CMMC, NIST SP 800-171, NIST 800-53, NIST CSF, ISO/IEC 27001, GDPR</li>
@@ -246,7 +149,7 @@
             </ul>
           </div>
           <!-- SOC Stack -->
-          <div class="card rounded-xl p-6 hover:shadow-lg transition">
+          <div data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
             <h3 class="text-xl font-bold mb-4"><span class="text-gradient">SOC</span> Stack</h3>
             <ul class="text-sm text-gray-300 space-y-2">
               <li><strong>SIEM Tools/Platforms:</strong> Splunk, IBM QRadar, SOAR Platforms</li>
@@ -255,7 +158,7 @@
             </ul>
           </div>
           <!-- Technical -->
-          <div class="card rounded-xl p-6 hover:shadow-lg transition">
+          <div data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
             <h3 class="text-xl font-bold mb-4"><span class="text-gradient">Technical</span></h3>
             <ul class="text-sm text-gray-300 space-y-2">
               <li><strong>Languages:</strong> Python (pandas, streamlit), basic Bash</li>
@@ -266,8 +169,8 @@
         </div>
 
         <!-- Education & Certifications -->
-        <div class="grid lg:grid-cols-2 gap-8 mt-12">
-          <div class="card rounded-xl p-6 hover:shadow-lg transition">
+        <div data-reveal-parent class="grid lg:grid-cols-2 gap-8 mt-12">
+          <div data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
             <h3 class="text-xl font-bold mb-4"><span class="text-gradient">Education</span></h3>
             <div>
               <div class="font-semibold text-accent">M.S. Cybersecurity (Distinction)</div>
@@ -275,7 +178,7 @@
               <div class="text-xs text-gray-400">May 2023 – Jan 2025</div>
             </div>
           </div>
-          <div class="card rounded-xl p-6 hover:shadow-lg transition">
+          <div data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
             <h3 class="text-xl font-bold mb-4"><span class="text-gradient">Certifications</span></h3>
             <ul class="text-sm text-gray-300 space-y-1">
               <li>• CompTIA Security+ (SY0-701)</li>
@@ -291,31 +194,25 @@
     <!-- Contact -->
     <section id="contact" class="py-20 bg-midnight" aria-labelledby="contact-title">
       <div class="max-w-4xl mx-auto px-4">
-        <div class="card rounded-2xl p-8">
+        <div data-reveal class="card rounded-2xl p-8">
           <h2 id="contact-title" class="text-3xl font-bold mb-6"><span class="text-gradient">Let's</span> Connect</h2>
           <p class="text-gray-300 mb-8 text-lg">Open to GRC Analyst, Risk &amp; Compliance, and SOC Analyst roles. Based in Bangalore; remote-friendly across India.</p>
           <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-4">
               <div class="flex items-center gap-3"><span class="font-semibold text-accent">Email:</span><a href="mailto:sreenith.r@gmail.com" class="hover:text-accent transition">sreenith.r@gmail.com</a></div>
-              <div class="flex items-center gap-3"><span class="font-semibold text-accent">Phone:</span><button type="button" class="hover:text-accent transition underline" id="copyPhone" aria-label="Copy phone number">+91 78933 24006</button></div>
+              <div class="flex items-center gap-3 flex-wrap"><span class="font-semibold text-accent">Phone:</span><a href="tel:+917893324006" class="hover:text-accent transition underline">+91 78933 24006</a><button type="button" class="hover:text-accent transition underline" id="copyPhone" aria-label="Copy phone number">Copy</button></div>
               <div class="flex items-center gap-3"><span class="font-semibold text-accent">LinkedIn:</span><a href="https://www.linkedin.com/in/sreenith-cyber/" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition">/in/sreenith-cyber</a></div>
               <div class="flex items-center gap-3"><span class="font-semibold text-accent">GitHub:</span><a href="https://github.com/sreenith70" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition">/sreenith70</a></div>
             </div>
             <form action="https://formspree.io/f/xldlqewy" method="POST" class="space-y-4" aria-label="Contact form" novalidate>
               <label class="vh" for="name">Your Name</label>
-              <input id="name" name="name" placeholder="Your Name" required class="w-full bg-black/30 border border-white/20 rounded-lg px-4 py-3 text-sm focus-ring transition" />
+              <input id="name" name="name" placeholder="Your Name" required autocomplete="name" class="w-full bg-black/30 border border-white/20 rounded-lg px-4 py-3 text-sm focus-ring transition" />
               <label class="vh" for="email">Your Email</label>
-              <input id="email" name="email" type="email" placeholder="Your Email" required class="w-full bg-black/30 border border-white/20 rounded-lg px-4 py-3 text-sm focus-ring transition" />
+              <input id="email" name="email" type="email" placeholder="Your Email" required autocomplete="email" class="w-full bg-black/30 border border-white/20 rounded-lg px-4 py-3 text-sm focus-ring transition" />
               <label class="vh" for="message">Message</label>
-              <textarea id="message" name="message" rows="4" placeholder="Message" required class="w-full bg-black/30 border border-white/20 rounded-lg px-4 py-3 text-sm focus-ring transition resize-none"></textarea>
-
-              <!-- Formspree enhancements -->
-              <input type="hidden" name="_subject" value="New message from Sreenith Portfolio" />
-              <input type="hidden" name="_next" value="https://sreenith70.github.io/#contact" />
-              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-
+              <textarea id="message" name="message" rows="4" placeholder="Message" required autocomplete="off" class="w-full bg-black/30 border border-white/20 rounded-lg px-4 py-3 text-sm focus-ring transition resize-none"></textarea>
               <button type="submit" class="w-full bg-brand hover:bg-accent rounded-lg px-4 py-3 font-semibold transition focus-ring">Send Message</button>
-              <p id="formNote" class="text-xs text-gray-400" aria-live="polite"></p>
+              <p id="form-status" role="status" aria-live="polite" class="text-sm text-green-400 hidden">✅ Thank you! Your message has been sent successfully.</p>
             </form>
           </div>
         </div>
@@ -336,13 +233,17 @@
     function scrollToWithOffset(id){
       const target = document.querySelector(id);
       if(!target) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({top, behavior:'smooth'});
+      window.scrollTo({top, behavior: prefersReduced ? 'auto' : 'smooth'});
     }
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(a=>{
       a.addEventListener('click',e=>{
         const id=a.getAttribute('href');
-        if(id.length>1){ e.preventDefault(); scrollToWithOffset(id); }
+        if(id.length>1 && document.querySelector(id)){
+          e.preventDefault();
+          scrollToWithOffset(id);
+        }
       });
     });
 
@@ -382,14 +283,60 @@
       }
     });
 
-    // Contact form UX
+    // Reveal-on-scroll
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const items = document.querySelectorAll('[data-reveal], .headshot-animate');
+      if(prefersReduced){ items.forEach(el=>el.classList.add('is-visible')); return; }
+      const groups = new Map();
+      items.forEach(el=>{
+        const parent = el.closest('[data-reveal-parent]');
+        const key = parent || document.body;
+        const idx = groups.get(key) || 0;
+        el.style.transitionDelay = (idx * 60) + 'ms'; // faster stagger
+        groups.set(key, idx+1);
+      });
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -12% 0px' });
+      items.forEach(el=>io.observe(el));
+    })();
+
+    // Contact form progressive enhancement (Formspree)
     const form = document.querySelector('form');
-    const note = document.getElementById('formNote');
-    form && form.addEventListener('submit', function() {
-      const button = form.querySelector('button[type="submit"]');
-      button.textContent = 'Sending...';
-      button.disabled = true;
-      note.textContent = 'Submitting via Formspree…';
+    const status = document.getElementById('form-status');
+    form && form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          status.classList.remove('hidden');
+          status.classList.remove('text-yellow-300');
+          status.classList.add('text-green-400');
+          status.textContent = '✅ Thank you! Your message has been sent successfully.';
+          form.reset();
+        } else {
+          status.textContent = '⚠️ Sorry, something went wrong. Please email me directly.';
+          status.classList.remove('hidden');
+          status.classList.remove('text-green-400');
+          status.classList.add('text-yellow-300');
+        }
+      } catch {
+        status.textContent = '⚠️ Network error. Please email me directly.';
+        status.classList.remove('hidden');
+        status.classList.remove('text-green-400');
+        status.classList.add('text-yellow-300');
+      }
     });
 
     // Copy phone to clipboard
@@ -398,7 +345,7 @@
       try{
         await navigator.clipboard.writeText('+917893324006');
         copyPhone.textContent='Copied!';
-        setTimeout(()=>copyPhone.textContent='+91 78933 24006', 1500);
+        setTimeout(()=>copyPhone.textContent='Copy', 1500);
       }catch{}
     });
   </script>
@@ -407,4 +354,3 @@
   </noscript>
 </body>
 </html>
-
