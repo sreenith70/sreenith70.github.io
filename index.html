@@ -60,7 +60,7 @@
     noscript .js-required { display:none; }
 
     #menu { flex-direction:column; gap:1rem; }
-    #menu.hidden { display: none !important; }
+    #menu.hidden { display: none; }
     @media (min-width:768px){ #menu { display:flex; flex-direction:row; } }
 
     @media (prefers-reduced-motion: no-preference){
@@ -95,15 +95,15 @@
 
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-xl border-b border-white/10" aria-label="Primary">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center relative">
       <a href="#top" class="font-bold text-xl text-gradient" aria-label="Home">SR</a>
       <button id="menuBtn" class="md:hidden border border-white/20 rounded-lg px-3 py-2 text-sm" aria-expanded="false" aria-controls="menu" aria-label="Open menu">Menu</button>
-      <div id="menu" class="hidden md:flex gap-6 text-sm">
-        <a href="#about" class="hover:text-accent transition">About</a>
-        <a href="#experience" class="hover:text-accent transition">Experience</a>
-        <a href="#projects" class="hover:text-accent transition">Projects</a>
-        <a href="#skills" class="hover:text-accent transition">Skills</a>
-        <a href="#contact" class="hover:text-accent transition">Contact</a>
+      <div id="menu" class="hidden md:flex gap-6 text-sm" role="menubar">
+        <a role="menuitem" href="#about" class="hover:text-accent transition">About</a>
+        <a role="menuitem" href="#experience" class="hover:text-accent transition">Experience</a>
+        <a role="menuitem" href="#projects" class="hover:text-accent transition">Projects</a>
+        <a role="menuitem" href="#skills" class="hover:text-accent transition">Skills</a>
+        <a role="menuitem" href="#contact" class="hover:text-accent transition">Contact</a>
       </div>
     </div>
   </nav>
@@ -130,12 +130,12 @@
         <div class="relative group">
           <div class="absolute inset-0 rounded-2xl blur-3xl bg-gradient-to-r from-brand to-accent opacity-20 group-hover:opacity-40 transition"></div>
           <img
-               src="./assets/Headshot.jpg"
-               srcset="./assets/Headshot-512.jpg 512w, ./assets/Headshot.jpg 1024w"
-               sizes="(min-width:1024px) 480px, 60vw"
-               alt="Portrait of Sreenith Rangaswamy"
-               class="headshot-animate relative rounded-2xl border border-white/10 w-full max-w-md mx-auto shadow-soft group-hover:scale-[1.02] transition"
-               width="1024" height="1024" fetchpriority="high" decoding="async" />
+            src="./assets/Headshot.jpg"
+            srcset="./assets/Headshot-512.jpg 512w, ./assets/Headshot.jpg 1024w"
+            sizes="(min-width:1024px) 480px, 60vw"
+            alt="Portrait of Sreenith Rangaswamy"
+            class="headshot-animate relative rounded-2xl border border-white/10 w-full max-w-md mx-auto shadow-soft group-hover:scale-[1.02] transition"
+            width="1024" height="1024" fetchpriority="high" decoding="async" />
         </div>
       </div>
     </header>
@@ -253,8 +253,8 @@
 
     <!-- Skills & Certifications -->
     <section id="skills" class="py-20" aria-labelledby="skills-title">
-      <div class="max-w-6xl mx_auto px-4">
-        <h2 id="skills-title" data-reveal class="text-3xl font-bold mb-12 text-center"><span class="text-gradient">Skills</span> & Expertise</h2>
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 id="skills-title" data-reveal class="text-3xl font-bold mb-12"><span class="text-gradient">Skills</span> & Expertise</h2>
         <div data-reveal-parent class="grid lg:grid-cols-3 gap-8">
           <!-- GRC Stack -->
           <div data-reveal class="card rounded-xl p-6 hover:shadow-lg transition">
@@ -375,28 +375,38 @@
     }
     window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(updateNav); ticking=true; } });
 
-    // Mobile menu: toggle + close on link + Esc
+    // Mobile menu: dropdown on small screens
     const btn=document.getElementById('menuBtn');
     const menu=document.getElementById('menu');
+    const mobileOpenClasses = ['flex','flex-col','gap-4','absolute','left-4','right-4','top-full','z-50','bg-black/90','rounded-lg','p-4','border','border-white/10','shadow-lg'];
+
+    function openMenu(){
+      menu.classList.remove('hidden');
+      mobileOpenClasses.forEach(c=>menu.classList.add(c));
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='Close';
+      btn.setAttribute('aria-label','Close menu');
+    }
+    function closeMenu(){
+      menu.classList.add('hidden');
+      mobileOpenClasses.forEach(c=>menu.classList.remove(c));
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='Menu';
+      btn.setAttribute('aria-label','Open menu');
+    }
     btn && btn.addEventListener('click',()=>{
-      const isHidden=menu.classList.toggle('hidden');
-      const expanded = !isHidden;
-      btn.setAttribute('aria-expanded', String(expanded));
-      btn.textContent = expanded ? 'Close' : 'Menu';
-      btn.setAttribute('aria-label', expanded ? 'Close menu' : 'Open menu');
+      if(menu.classList.contains('hidden')) openMenu(); else closeMenu();
     });
+    // Close when clicking a link (mobile)
     menu && menu.addEventListener('click', (e) => {
       if (e.target.tagName === 'A' && window.innerWidth < 768) {
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.textContent = 'Menu';
+        closeMenu();
       }
     });
+    // Close on Escape
     document.addEventListener('keydown', (e)=>{
       if(e.key==='Escape' && btn && !menu.classList.contains('hidden')){
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded','false');
-        btn.textContent='Menu';
+        closeMenu();
       }
     });
 
@@ -410,7 +420,7 @@
         const parent = el.closest('[data-reveal-parent]');
         const key = parent || document.body;
         const idx = groups.get(key) || 0;
-        el.style.transitionDelay = (idx * 60) + 'ms';
+        el.style.transitionDelay = (idx * 60) + 'ms'; // faster stagger
         groups.set(key, idx+1);
       });
       const io = new IntersectionObserver((entries)=>{
