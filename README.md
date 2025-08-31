@@ -9,7 +9,7 @@ I bridge the gap between **security policy and technical reality**, transforming
 - **About Me** — background and career focus  
 - **Experience** — GRC, Blue Team, and cybersecurity research roles  
 - **Projects** — AI + automation for compliance & threat analysis  
-- **Skills & Certifications** — GRC, SIEM platfroms, technical tools, education  
+- **Skills & Certifications** — GRC, SIEM platforms, technical tools, education  
 - **Contact** — direct form + links to LinkedIn & GitHub  
 
 ## Tech Stack
